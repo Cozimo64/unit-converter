@@ -22,7 +22,12 @@ function massCalc(input) {
   mass.textContent = `${input} kilograms = ${lbs} pounds | ${input} pounds = ${kilos} kilograms`;
 }
 
-convertBtn.addEventListener("click", function () {
+function validateInput(input) {
+  // Remove non-numeric characters
+  input.value = input.value.replace(/[^0-9]/g, '');
+}
+
+inputBox.addEventListener("keyup", function () {
   let input = parseFloat(inputBox.value);
   if (isNaN(input)) {
     alert("Please enter a valid number.");
@@ -32,3 +37,5 @@ convertBtn.addEventListener("click", function () {
     massCalc(input);
   }
 });
+
+inputBox.style.width = inputBox.scrollWidth + 'px'
